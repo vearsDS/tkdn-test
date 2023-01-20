@@ -5,7 +5,9 @@ import http, { STATUS_CODES } from 'http'
 import path from 'path'
 import { walkSync } from "./helper/readFile.js"
 import { database } from "./settings/db.js"
+import { config } from 'dotenv'
 
+config();
 const port = process.env.PORT || 3000
 const app = express()
 const server = http.Server(app)

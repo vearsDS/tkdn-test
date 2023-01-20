@@ -1,4 +1,5 @@
 import { database } from '../settings/db.js'
+import bcrypt from 'bcrypt'
 
 const defaultReturn = (code, response, message, result) => {
     return {
@@ -13,17 +14,25 @@ const defaultReturn = (code, response, message, result) => {
 
 export const createCustomer = async (req, res) => {
     try {
-        const { name, email, password, gender, is_married, address } = req.body
+        let { name, email, password, gender, is_married, address } = req.body
 
         if (!name || !email || !password || !gender || !is_married || !address) {
             throw { code: 500, message: 'PLease Input All The Field! (name, email, password, gender, is_married, address)' }
         }
+
+
         const updateListValue = []
         const updateListColumnn = []
         const updateListNumber = []
         let index = 1
         for (const bodyList in req.body) {
-            updateListValue.push(req.body[bodyList])
+            if (bodyList === 'password') {
+                //encrypt password
+                password = await bcrypt.hash(password, 10)
+                updateListValue.push(password)
+            } else {
+                updateListValue.push(req.body[bodyList])
+            }
             updateListColumnn.push(bodyList)
             updateListNumber.push('$' + index)
             index += 1

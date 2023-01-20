@@ -2,9 +2,9 @@ CREATE DATABASE tkdn_costumer;
 
 -- ALTER DATABASE tkdn_costumer OWNER TO dev;
 
-SET TIMEZONE = 'Asia/Jakarta'
 
 CREATE TYPE gender as ENUM ('MALE', 'FEMALE`')
+
 CREATE TABLE Costumers (
     id serial PRIMARY KEY,
     name VARCHAR(100),
