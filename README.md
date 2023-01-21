@@ -16,6 +16,13 @@ run npm i;
 Run npm run prod -> Production;
 Run npm run dev -> Development;
 
+4# Route :
+localhost:3000/api/costumer -> Create Customer
+localhost:3000/api/costumer -> Get All Costumer
+localhost:3000/api/costumer/:costumerId -> Get Detail Costumer
+localhost:3000/api/costumer/update/:costumerId -> Update Costumer
+localhost:3000/api/costumer/delete/:costumerId -> Delete Costumer
+
 #TECH STACK :
 - Database -> PostgreSQL;
 - Framework -> ExpressJS;
